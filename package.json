@@ -1,0 +1,45 @@
+{
+  "name": "micro-child-app-vue",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "serve -l 5001 -s build",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "compile": "rm -f dist/js/vueApp.js && for f in dist/js/*.js; do (cat \"${f}\"; echo) >> dist/js/vueApp.js; done"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "serve": "^11.3.2",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-assets-manifest": "^3.1.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
