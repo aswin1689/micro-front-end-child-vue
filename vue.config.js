@@ -11,7 +11,16 @@ module.exports = {
 			splitChunks: false,
 		},
 	},
+	chainWebpack: config => {
+		config.merge({
+			externals: process.env.VUE_APP_BUILD_MODE === 'test' || process.env.NODE_ENV === 'development' ? [] : {
+				'vue': 'Vue',
+				'vue-router': 'VueRouter',
+			},
+		});
+	},
 	css: {
 		extract: false,
+		sourceMap: true,
 	}
 };

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "serve -l 5001 -s build",
+    "start": "serve -l 5001 -s serve",
+    "serve": "vue-cli-service serve --port 5001",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "compile": "rm -f dist/js/vueApp.js && for f in dist/js/*.js; do (cat \"${f}\"; echo) >> dist/js/vueApp.js; done"
