@@ -2,11 +2,30 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 
 module.exports = {
 	configureWebpack: {
+		output: {
+			filename: 'main-[hash].js'
+		},
 		plugins: [
 			new WebpackAssetsManifest({
 				output: 'asset-manifest.json',
+				customize(entry, original, manifest, asset){
+					return {
+						key: `${entry.key.replace('app', 'main')}`,
+						value: `${entry.value}`
+					}
+				},
+				transform(assets, manifest){
+					return {
+						files: assets
+					}
+				}
 			}),
 		],
+		devServer: {
+			headers: {
+				'Access-Control-Allow-Origin': '*'
+			}
+		},
 		optimization: {
 			splitChunks: false,
 		},
