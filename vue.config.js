@@ -1,20 +1,13 @@
 const WebpackAssetsManifest = require('webpack-assets-manifest');
+const webpack = require("webpack");
 
 module.exports = {
+	filenameHashing: false,
 	configureWebpack: {
-		output: {
-			filename: 'main-[hash].js'
-		},
 		plugins: [
 			new WebpackAssetsManifest({
 				output: 'asset-manifest.json',
-				customize(entry, original, manifest, asset){
-					return {
-						key: `${entry.key.replace('app', 'main')}`,
-						value: `${entry.value}`
-					}
-				},
-				transform(assets, manifest){
+				transform(assets, manifest) {
 					return {
 						files: assets
 					}
@@ -30,16 +23,7 @@ module.exports = {
 			splitChunks: false,
 		},
 	},
-	chainWebpack: config => {
-		config.merge({
-			externals: process.env.VUE_APP_BUILD_MODE === 'test' || process.env.NODE_ENV === 'development' ? [] : {
-				'vue': 'Vue',
-				'vue-router': 'VueRouter',
-			},
-		});
-	},
 	css: {
-		extract: false,
-		sourceMap: true,
+		extract: false
 	}
 };
