@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 5000",
-    "serve-prod": "serve -s dist",
+    "serve-dist": "cd dist && live-server --port=5000 --cors",
     "build": "vue-cli-service build",
     "build-lib": "vue-cli-service build --target lib --inline-vue --formats umd-min --name main ./src/main.js",
     "lint": "vue-cli-service lint",

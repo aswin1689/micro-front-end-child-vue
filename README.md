@@ -5,19 +5,15 @@
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Build for production with build target as 'library'
+This is to serve the Vue micro frontend app in the parent app.
 ```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
+yarn build-lib
 ```
 
-### Lints and fixes files
+### Serve 'dist' folder locally
 ```
-yarn lint
+yarn serve-dist
 ```
 
 ### Customize configuration
