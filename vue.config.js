@@ -1,5 +1,4 @@
 const WebpackAssetsManifest = require('webpack-assets-manifest');
-const webpack = require("webpack");
 
 module.exports = {
 	filenameHashing: false,
@@ -7,7 +6,7 @@ module.exports = {
 		plugins: [
 			new WebpackAssetsManifest({
 				output: 'asset-manifest.json',
-				transform(assets, manifest) {
+				transform(assets) {
 					return {
 						files: assets
 					}
