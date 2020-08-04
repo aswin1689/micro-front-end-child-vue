@@ -1,13 +1,18 @@
 <template>
   <div>
     <h2>Products</h2>
-    <ul class="products">
-      <li class="product"
+    <div class="products">
+      <div
+        class="product"
         v-for="product in products"
         v-bind:key="product.id"
-        @click="viewDetails(product)"
-      >{{ product.name }} ${{ product.price }}.00 <img class="product-image" :src="product.image" /></li>
-    </ul>
+      >
+        <img class="product-image" :src="product.image" @click="viewDetails(product)" />
+        <h4>{{ product.name }}</h4>
+        <h3>${{ product.price }}.00</h3>
+        <button>Add to Cart</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -54,23 +59,27 @@ export default {
   },
   methods: {
     viewDetails(product) {
-      console.log(product);
-    }
-  }
+      this.$router.push({ name: 'productDetails', params: { id: product.id, product : product }})
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .products {
-list-style-type: none;
-display: flex;
-align-content: space-evenly;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .product {
-  border: 1px solid black;
-  margin: .5em;
+  flex-grow: 1;
+  width: 20%;
+  padding: .3em;
+  border: 2px solid #ccc;
+  border-radius: .5em;
+  margin: 0.5em;
 }
 
 .product-image {
