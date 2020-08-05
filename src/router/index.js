@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Products from '../views/Products.vue'
 import ProductDetails from '../views/ProductDetails.vue'
 
-Vue.use(VueRouter)
+if (!window.VueRouter) Vue.use(VueRouter)
 
 const routes = [
   {

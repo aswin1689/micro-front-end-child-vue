@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Products</h2>
     <div class="products">
       <div
         class="product"
@@ -71,6 +70,7 @@ export default {
   list-style-type: none;
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .product {
