@@ -1,15 +1,11 @@
 <template>
   <div>
     <div class="products">
-      <div
-        class="product"
-        v-for="product in products"
-        v-bind:key="product.id"
-      >
+      <div class="product" v-for="product in products" v-bind:key="product.id">
         <img class="product-image" :src="product.image" @click="viewDetails(product)" />
         <h4>{{ product.name }}</h4>
         <h3>${{ product.price }}.00</h3>
-        <button>Add to Cart</button>
+        <button @click="addToCart(product)">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -58,7 +54,15 @@ export default {
   },
   methods: {
     viewDetails(product) {
-      this.$router.push({ name: 'productDetails', params: { id: product.id, product : product }})
+      this.$router.push({
+        name: "productDetails",
+        params: { id: product.id, product: product },
+      });
+    },
+    addToCart(product) {
+      console.log(product);
+      const event = new CustomEvent("addToCart", { detail: product });
+      window.dispatchEvent(event);
     },
   },
 };
@@ -76,9 +80,9 @@ export default {
 .product {
   flex-grow: 1;
   width: 20%;
-  padding: .3em;
+  padding: 0.3em;
   border: 2px solid #ccc;
-  border-radius: .5em;
+  border-radius: 0.5em;
   margin: 0.5em;
 }
 
