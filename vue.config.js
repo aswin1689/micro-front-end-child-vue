@@ -2,14 +2,14 @@ const WebpackAssetsManifest = require('webpack-assets-manifest');
 
 module.exports = {
 	filenameHashing: false,
-	// chainWebpack: config => {
-	// 	config.merge({
-	// 		externals: process.env.NODE_ENV === 'development' ? [] : {
-	// 			'vue': 'Vue',
-	// 			'vue-router': 'VueRouter',
-	// 		},
-	// 	});
-	// },
+	chainWebpack: config => {
+		config.merge({
+			externals: process.env.NODE_ENV === 'development' ? [] : {
+				'vue': 'Vue',
+				'vue-router': 'VueRouter',
+			},
+		});
+	},
 	configureWebpack: {
 		plugins: [
 			new WebpackAssetsManifest({
@@ -31,6 +31,7 @@ module.exports = {
 		}
 	},
 	css: {
-		extract: false
+		extract: false,
+		sourceMap: true
 	}
 };
